@@ -60,7 +60,12 @@
 
         parseElement: function () {
             var elText = $.trim($(this.element).text());
-
+            
+            // Delimiters break integers
+            if (this.settings.delimiter) { 
+	            elText = elText.replace(this.settings.delimiter, '');
+            }
+            
             this.settings.fromValue = this.settings.fromValue || this.format(elText);
         },
 
